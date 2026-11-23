@@ -1,0 +1,45 @@
+name: regenerate profile
+
+on:
+  schedule:
+    - cron: "23 21 * * *"        # 03:23 Asia/Dhaka, off the top-of-hour rush
+  workflow_dispatch:              # manual "Run workflow" button
+  push:
+    branches: [main]
+    paths: ["profile.toml", "scripts/**", ".github/workflows/profile.yml"]
+
+# Least privilege: the default token may only write to THIS repo.
+permissions:
+  contents: write
+
+concurrency:
+  group: profile
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # Pin these to full commit SHAs once you've set it up (Settings → Actions lets you require it).
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"     # stdlib only: tomllib, urllib, json. No pip install.
+
+      - name: Generate SVGs and README blocks
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}   # fine-grained, read-only (see docs/DESIGN.md §6)
+        run: python scripts/generate.py
+
+      - name: Commit if anything real changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets README.md
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "bench: regenerate"
+            git push
+          fi
