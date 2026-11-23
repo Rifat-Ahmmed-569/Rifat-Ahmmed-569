@@ -1,0 +1,69 @@
+# Everything a human decides lives here. Everything measurable comes from the API.
+# Rule of thumb: if a line here can't be verified by opening a repo, it doesn't belong.
+
+login = "Rifat-Ahmmed-569"
+
+[identity]
+name    = "Rifat Ahmmed"
+role    = "Robotics · Embedded Systems · Automation · IoT"
+tagline = "Making machines behave — and finding out why when they don't."
+
+# A repo counts as "documented" when it has a real README AND enough evidence files.
+# Evidence detectors (scripts/metrics.py): schematic, firmware, mechanical, test data, demo.
+[documented]
+min_readme_bytes = 1200
+min_evidence     = 2
+
+# The robot is assembled from documented builds, not from commit volume.
+[robot]
+stages = [
+  { name = "FRAME", at = 0 },
+  { name = "DRIVE", at = 1 },
+  { name = "BRAIN", at = 3 },
+  { name = "SENSE", at = 5 },
+  { name = "REACH", at = 8 },
+  { name = "LINK",  at = 12 },
+]
+
+# Commit share is grouped by repository *topics*. Tag your repos; untagged work shows as "untagged".
+# Private repos are never classified — they collapse into one anonymous "private" bucket.
+[domains]
+firmware   = ["firmware", "embedded", "esp32", "stm32", "arduino", "freertos", "microcontroller", "avr"]
+robotics   = ["robotics", "robot", "ros", "ros2", "kinematics", "motion-control", "line-follower"]
+iot        = ["iot", "mqtt", "sensors", "telemetry", "home-automation"]
+automation = ["automation", "plc", "control-systems", "pid"]
+
+# Private repos only ever appear as one integer. Set false to show "—" instead.
+# (Keep this false if your token only has access to public repos, or you'd show a misleading 00.)
+[privacy]
+show_private_count = true
+
+# Repos that shouldn't count toward anything (tutorial forks, coursework dumps, experiments).
+exclude = []
+
+# Builds made before you started documenting seriously. Declare the honest number once;
+# progress = featured builds with built < documenting_since that now pass the "documented" check.
+[archive]
+documenting_since = 2026
+legacy_total      = 0      # ‹set this to the real count, e.g. 8›
+
+# Showcase: 3–5 builds max. Order = display order. Only public repos get links and evidence lamps.
+# [[featured]]
+# repo     = "‹repo-name›"
+# title    = "‹Human-readable name›"
+# summary  = "‹One sentence: the problem, the machine, the result. No adjectives.›"
+# stack    = ["‹MCU›", "‹RTOS / framework›", "‹sensors / comms›"]
+# built    = 2023                  # when you actually built it
+# role     = "‹solo build | led a team of 4›"
+# demo_url = "‹https://youtu.be/...›"   # optional; counts as demo evidence
+
+# Field notes: short, dated, human. Shown newest first, max 3.
+# [[notes]]
+# date = "2026-11-20"
+# kind = "On the bench"
+# text = "‹What you're building or debugging right now.›"
+#
+# [[notes]]
+# date = "2026-11-02"
+# kind = "Last thing that broke"
+# text = "‹Symptom → root cause → fix, in two lines.›"
