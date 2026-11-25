@@ -1,7 +1,8 @@
 <!-- BENCH:START -->
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/bench-light.svg">
-  <img src="assets/bench-dark.svg" width="100%" alt="Rifat Ahmmed: robotics, embedded systems, automation. Robot build stage and telemetry are generated from the GitHub API.">
+<img width="2048" height="1152" alt="image" src="https://github.com/user-attachments/assets/3ea10aff-3e25-49ce-a717-0efc452d4d4b" />
+
 </picture>
 <!-- BENCH:END -->
 
