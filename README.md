@@ -1,11 +1,8 @@
 <!-- BENCH:START -->
-<!-- OPTION A: Paste your bare GitHub user-attachment .mp4 URL on the line below for native autoplay -->
-https://github.com/user-attachments/assets/YOUR_UPLOADED_MP4_ID_HERE
-
-<!-- OPTION B: Or delete Option A above and uncomment the block below to use a clickable animated preview linking to your Facebook Reel -->
-<!--
-[![Hardware Bench Demo](assets/bench-demo.webp)](https://www.facebook.com/reel/1027786212995721)
--->
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/bench-light.svg">
+  <img width="2048" height="1152" alt="Hardware bench overview" src="https://github.com/user-attachments/assets/3ea10aff-3e25-49ce-a717-0efc452d4d4b" />
+</picture>
 <!-- BENCH:END -->
 
 I build robots and the embedded systems underneath them: firmware, sensors, motor control, and the glue that makes software and hardware agree with each other. I like working at the layer where things actually fail. The debugging is painful, and that's where the fun is.
